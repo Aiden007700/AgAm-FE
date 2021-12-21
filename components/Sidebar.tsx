@@ -5,8 +5,8 @@ import { MenuIcon, MenuAlt4Icon, PencilIcon } from "@heroicons/react/outline";
 
 const Sidebar = ({ active }) => {
   return (
-    <div className="hidden sm:flex flex-col items-center xl:items-start xl:w-[340px] p-2 fixed h-full border-r-2 border-solid border-[#b9b9b9]">
-      <div className="flex items-center justify-center w-28 h-14 p-0 xl:ml-24 rounded-full">
+    <div className="hidden sm:flex flex-col items-center xl:items-start xl:w-[240px] p-2 h-screen border-r-2 border-solid border-[#b9b9b9]">
+      <div className="flex items-center justify-center w-28 h-14 p-0 xl:ml-4 rounded-full">
         <Link href="/">
           <a className="flex items-center justify-center">
             <Image
@@ -18,7 +18,7 @@ const Sidebar = ({ active }) => {
           </a>
         </Link>
       </div>
-      <div className="space-y-2.5 mt-4 mb-2.5 xl:ml-24">
+      <div className="space-y-2.5 mt-4 mb-2.5 xl:ml-4">
         <SidebarLink
           text="Simple"
           Icon={MenuAlt4Icon}

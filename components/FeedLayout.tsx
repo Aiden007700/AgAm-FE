@@ -1,32 +1,23 @@
-import complexData from "../data/complex";
-import simpleData from "../data/simple";
+import { useEffect, useState } from "react";
+import { getProjects } from "../utils/api";
+import FeedCard from "./FeedCard";
 
 const FeedLayout = ({ type }: IFeedLayout) => {
-  const data = type === "Complex" ? complexData : simpleData;
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getProjects(type).then((data) => setData(data));
+  }, []);
 
   return (
     <div className="py-3 px-3">
-      {data.map((item, index) => (
-        <div className="shadow-lg rounded-2xl p-4 bg-white relative overflow-hidden my-6">
-          <div className="flex justify-between">
-            <p className="text-gray-800 text-lg font-medium mb-2">
-              {item.id} {item.name}
-            </p>
-            <p className="text-indigo-500 text-xl font-medium">{item.type}</p>
-          </div>
-          {item.data.map((el, index) => (
-            <p className="text-gray-400 text-xs">
-              {el}
-            </p>
-          ))}
-        </div>
-      ))}
+      {data.map((item, index) => <FeedCard item={item} key={item.id} />)}
     </div>
   );
 };
 
 export interface IFeedLayout {
-  type: string;
+  type: "Complex" | "Simple";
 }
 
 export default FeedLayout;

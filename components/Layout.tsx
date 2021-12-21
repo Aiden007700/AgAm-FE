@@ -9,9 +9,9 @@ const Layout = ({children, title, active}) => {
         <Head>
           <title>{title}</title>
         </Head>
-        <main className="min-h-screen flex max-w-[1500px] mx-auto">
+        <main className="h-screen flex">
           <Sidebar active={active} />
-          <section className="flex-grow max-w-2xl sm:ml-[13px] xl:ml-[370px]">
+          <section className="flex-1 overflow-y-scroll">
             <Headder title={title} />
             {children}
           </section>
