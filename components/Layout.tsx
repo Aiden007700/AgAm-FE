@@ -1,41 +1,29 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import Head from "next/head"
+import { ReactChild } from "react"
+import Headder from "./Headder"
+import Sidebar from "./Sidebar"
 
-type Props = {
-  children?: ReactNode
-  title?: string
+const Layout = ({children, title, active}) => {
+    return (
+        <div>
+        <Head>
+          <title>{title}</title>
+        </Head>
+        <main className="min-h-screen flex max-w-[1500px] mx-auto">
+          <Sidebar active={active} />
+          <section className="flex-grow max-w-2xl sm:ml-[13px] xl:ml-[370px]">
+            <Headder title={title} />
+            {children}
+          </section>
+        </main>
+      </div>
+    )
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-)
+export interface ILayout {
+    children: ReactChild
+    title: string
+    active: string
+}
 
 export default Layout
